@@ -1,0 +1,263 @@
+body{
+	margin: 10%;
+	font-family: monospace;
+}
+nav a{
+	text-transform: uppercase;
+	font-size: 20pt;
+	color: violet;
+}
+h1{
+	margin: 50px auto;
+	text-transform: uppercase;
+	font-size: 40px;
+}
+
+/*PSEUDOATRYBUTY*/
+/*efekt po najechaniu kursorem*/
+nav a:hover{
+	color: magenta;
+}
+/*aktywny i odwiedzony link*/
+nav a:active, nav a:visited{
+	color: orange;
+} 
+/*dodawanie elementu po jakimś znaczniku*/
+nav a::after{
+	/*content jest ważny, może być pusty*/
+	content: " <<<";
+	padding: 5px;
+/*	after zaadaptuje style, jakie ma jego "rodzic".
+	Ważne! after jest inline, jeśli nie podasz mu display:blok, nie przyjmie wysokości ani szerokości;*/
+
+	/*zauważ w przeglądarce, że między linkiem a after jest przerwa - jest on osobnym elementem*/
+}
+section{
+	margin: 100px 0;
+	padding: 20px; 
+}
+#pseudoatrybuty{
+	background-color: #ffc74d;
+}
+/*drugi element listy:*/
+li:nth-child(2){
+	font-size: 20px;
+}
+/*nieparzysty element listy*/
+li:nth-child(odd){
+	font-style: italic;
+	/*dla parzystych - even*/
+}
+/*co trzeci element listy*/
+li:nth-child(3n){
+	padding-left: 80px;
+}
+/*ostatni element listy*/
+li:last-child{
+	text-transform: uppercase;
+}
+/*pierwsza litera w liście*/
+li:first-letter{
+	font-size: 28px;
+	font-weight: 800;
+}
+/*więcej pseudotrybutów do zabawy a w3schools.com lub MDN lub csstricks!*/
+
+/*DISPLAY*/
+
+#display{
+	background-color: #bbaa3b;
+}
+ul#block > li{
+	/*block przyjmuje szerokość i wysokość, ale wyświetla elementy jeden pod drugim*/
+	display: block;
+	margin-top: 20px;
+	width: 200px;
+	height: 200px;
+	background-color: white;
+}
+ul#inline > li{
+	/*inline wyświetla elementy obok siebie, ale nie mają wysokości ani szerokości innej niż swój kontent; wypisywanie tutaj width i height nie ma sensu*/
+	display: inline;
+	margin-top: 20px;
+	width: 200px;
+	height: 200px;
+	background-color: white;
+}
+ul#inline-block > li{
+	/*inline-block łączy cechy block i inline*/
+	display: inline-block;
+	margin-top: 20px;
+	width: 200px;
+	height: 200px;
+	background-color: white;
+}
+/*pamiętaj też o istnieniu display: none!*/
+
+/*POSITIONS*/
+#positions{
+	background-color: #4a82c3;
+}
+.container{
+	width: 80%;
+	height: 280px;
+	margin: 20px auto;
+	background-color: #ffc107;
+}
+.child{
+	width: 40%;
+	height: 100px;
+	margin: 20px auto;
+	background-color: #9c27b0;
+}
+/*position relative:*/
+.relative .child:last-child{
+	position: relative;
+	right: 40px;
+	bottom: 80px;
+}
+/*position absolute*/
+.absolute{
+	position: relative;
+	/*pamiętaj, że najbliższy rodzic musi mieć pozycję!*/
+}
+.absolute .child:last-child{
+	position: absolute;
+	right: 40px;
+	bottom: 80px;
+}
+/*position fixed*/
+.fixed .child:last-child{
+	position: fixed;
+	right: 40px;
+	bottom: 80px;
+}
+/*CSS GRID VIEW*/
+#cssgrid::after{
+	content: "";
+	clear: both;
+	display: block;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+/*wartości procentowe wynikają z dzielenia 100% szerokości okna na 12*/
+
+/*gwiazdka dodaje każdemu z elementów box-sizing: border-box
+ale! uwaga na margin przy liczeniu!*/
+*{
+    box-sizing: border-box;
+}
+
+/*każdemu elementowi, który w klasie ma cząstkę tej nazwy w cudzysłowach, daje float: left*/
+[class*="col-"] {
+    float: left;
+}
+/*po każdym rzędzie (za pomocą after, nie musimy dodawać elementu "po") "czyści" nam float. Dzięki temu następne elementy nie będą opływać tych poprzednich, tylko utworzą nowy rząd*/
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.yellow{
+	height: 700px;
+	background-color: #ffd45a;
+	position: relative;
+}
+.red, .green, .blue{
+	height: 230px;
+}
+.red{
+	position: relative;
+	background-color: #d82b43;
+}
+
+.blue{
+	background-color: #3eedff;
+}
+.green{
+	background-color: #a9c74d;
+	height: 300px;
+}
+
+/*centrowanie wertykalne*/
+#centrowaniewertykalne{
+	background-color: #b06b27;
+}
+#centrowaniewertykalne div{
+	background-color: #9ee1ff;
+	height: 300px;
+	width: 300px;
+	margin: 30px auto;
+	/*horyzontalnie centruje się bez kłopotu*/
+	text-align: center;
+}
+
+
+/*Sposób I*/
+/*jeśli znamy wysokość rodzica i się ona nie zmienia w zależności od wielkości okna:
+
+nasza wysokość to w tym przypadku 300px;
+korzystamy z line-height, czyli wysokości linii pisma. Sam tekst jest domyślnie na osi swojej linii pisma
+*/
+#cent1 p{
+	line-height: 300px;
+}
+/*Sposób II*/
+
+/*nie znamy wysokości rodzica
+nie przeszkadza nam, że zmienimy elementowi display*/
+#cent2{
+	display: table;
+}
+#cent2 p{
+	display: table-cell;
+	vertical-align: middle;
+}
+/*Sposób III - kuloodporny
+
+nie znamy wysokości rodzica;
+nie możemy zmienić rodzicowi display;*/
+#cent3 {
+	position: relative;
+	/*(rodzic musi mieć jakąś pozycję)*/
+}
+/*tworzymy dla niego element before. 
+Po co? Nie możemy zmienić jego display;
+nie znamy jego wysokości, a potrzebujemy jej sto procent - before, jako dziecko #cent3, weźmie jej 100%*/
+#cent3::before{
+	content: "";
+	/*tutaj możemy dać śmiało display*/
+	display: inline-block;
+	height: 100%;
+	/*width nas nie interesuje, ma nam nie przeszkadzać*/
+	width: 1%;
+	vertical-align: middle;
+}
+#cent3 p{
+	display: inline-block;
+	margin: 0; /*< zerujemy domyślny margin p*/
+	vertical-align: middle;
+}
+
+/*Dlaczego to działa?
+
+Vertical-align wyśrodkowuje elementy na osi poziomej, ale tylko konkretne, np. komórki tabeli lub elementy liniowe
+
+Jeżeli mamy kilka elementów inline-block o różnych wysokościach, domyślnie "dosuną" się do górnej krawędzi
+
+Jeśli damy im vertical-align middle, ustawią się względem środka osi poziomej
+
+Nie mogliśmy dać inline-block dla #cent3, poniewż ta zasada "ustawiania się" dotyczy tylko rodzeństwa - tutaj tkwi magic pseudoelementów;
+before jest jednocześnie częścią #cent3 jak i jego dzieckiem; elementy zawarte w #cent3 będą 'rodzeństwem' before i after*/
+
